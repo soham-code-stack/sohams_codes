@@ -1,0 +1,48 @@
+import random
+
+def get_computer_choice():
+    choices=["rock","paper","scissors"]
+    return random.choice(choices)
+
+def determine_winners(user_choice ,computer_choice):
+    if user_choice==computer_choice:
+        return "its a tie!"
+    elif user_choice=="rock" and computer_choice=="scissors" or user_choice=="scissors" and computer_choice=="paper" or user_choice=="paper" and computer_choice=="rock":
+        return "you win"
+    else:
+        return "i win!...better luck next time"
+    
+def main():
+    user_score=0
+    computer_score=0
+    tie=0
+    
+    print("welcome to rock,paper, scissors!")
+    while True:
+        user_choice = input("1.rock\n2.paper\n3.scissors\n4.quit\nEnter choice :-").lower()
+        if user_choice=='quit':
+            print("your score:-",user_score,"computer score",computer_score,"tie:-",tie)
+            break
+        if user_choice not in ["rock","paper" ,"scissors"]:
+            print("invalid choice,please try again.")
+            continue
+        
+        computer_choice = get_computer_choice()
+        print(f"computer chose:{computer_choice}")
+        
+        result = determine_winners(user_choice, computer_choice)
+        if result == ("you win"):
+            print("i win")
+            user_score +=1
+                
+        elif result == ("i win!...better luck next time"):
+            print("computer win")
+            computer_score +=1
+            
+        else :
+            tie +=1    
+                
+       
+if __name__=="__main__":
+    
+    main()
